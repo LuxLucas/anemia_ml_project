@@ -1,0 +1,27 @@
+# Checkpoints ocultos criados automaticamente pelo JupyterLab
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Cache e arquivos temporários do Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+
+# Ambientes virtuais (caso algum colega use venv ou conda)
+venv/
+env/
+.venv/
+
+# Arquivos temporários abertos pelo Excel no Windows (~$anemia_dataset.xlsx)
+~$*.xlsx
+~$*.xls
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Opcional: Descomente as linhas abaixo SE NÃO quiser subir modelos pesados ou dados processados no Git
+# models/*.joblib
+# data/processed/*.csv

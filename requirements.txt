@@ -1,0 +1,24 @@
+# --- Ambiente JupyterLab e Extensões ---
+jupyterlab
+jupyterlab-git
+jupyterlab-spreadsheet-editor
+jupyterlab-lsp
+python-lsp-server[all]
+jupyterlab_code_formatter
+black
+isort
+jupyterlab-execute-time
+nbdime
+
+# --- Ciência de Dados e Leitura de Planilhas ---
+pandas
+numpy
+openpyxl
+
+# --- Machine Learning e Modelos ---
+scikit-learn
+joblib
+
+# --- Visualização de Dados (Gráficos e Matrizes) ---
+matplotlib
+seaborn
