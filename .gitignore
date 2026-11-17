@@ -1,6 +1,7 @@
 # Checkpoints ocultos criados automaticamente pelo JupyterLab
 .ipynb_checkpoints/
 */.ipynb_checkpoints/
+.virtual_documents/
 
 # Cache e arquivos temporários do Python
 __pycache__/
