@@ -22,6 +22,8 @@ joblib
 # --- Visualização de Dados (Gráficos e Matrizes) ---
 matplotlib
 seaborn
+ipywidgets
+display
 
 # Para criar uma página web de apresentação
 voila
