@@ -9,6 +9,7 @@ black
 isort
 jupyterlab-execute-time
 nbdime
+ipython
 
 # --- Ciência de Dados e Leitura de Planilhas ---
 pandas
@@ -23,7 +24,6 @@ joblib
 matplotlib
 seaborn
 ipywidgets
-display
 
 # Para criar uma página web de apresentação
 voila
