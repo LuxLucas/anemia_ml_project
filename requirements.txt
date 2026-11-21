@@ -19,6 +19,7 @@ openpyxl
 # --- Machine Learning e Modelos ---
 scikit-learn
 joblib
+imbalanced-learn
 
 # --- Visualização de Dados (Gráficos e Matrizes) ---
 matplotlib
