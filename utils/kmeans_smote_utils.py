@@ -72,6 +72,7 @@ def fit_kmeans_scenarios(
     n_clusters: int = 5,
     random_state: int = 2005,
     scalers: Optional[Mapping[str, object]] = None,
+    n_init: int = 10,
 ) -> Dict[str, dict]:
     """Treina K-means sem oversampling, mantendo objetos e dados transformados."""
     scalers = dict(scalers or make_scalers(random_state))
@@ -80,7 +81,7 @@ def fit_kmeans_scenarios(
     for name, scaler in scalers.items():
         Xtr = _as_frame(scaler.fit_transform(X_train), X_train.columns)
         Xte = _as_frame(scaler.transform(X_test), X_test.columns)
-        model = KMeans(n_clusters=n_clusters, n_init=20, random_state=random_state)
+        model = KMeans(n_clusters=n_clusters, n_init=n_init, random_state=random_state)
         model.fit(Xtr)
         scenarios[name] = {
             "scaler": scaler,
@@ -102,6 +103,7 @@ def smote_mrs(
     target_ratio: float = 0.20,
     k_max: int = 3,
     random_state: int = 2005,
+    n_init: int = 10,
 ) -> Tuple[pd.DataFrame, pd.Series, pd.DataFrame]:
     """Aplica K-means + SMOTE local + ROS no conjunto fornecido.
 
@@ -114,7 +116,7 @@ def smote_mrs(
 
     group_labels = KMeans(
         n_clusters=n_groups,
-        n_init=20,
+        n_init=n_init,
         random_state=random_state,
     ).fit_predict(X)
 
@@ -189,6 +191,8 @@ def fit_smote_mrs_scenarios(
     target_ratio: float = 0.20,
     random_state: int = 2005,
     scalers: Optional[Mapping[str, object]] = None,
+    n_groups: Optional[int] = None,
+    n_init: int = 10,
 ) -> Dict[str, dict]:
     """Treina K-means após SMOTE-MRS, sem tocar no conjunto de teste."""
     scalers = dict(scalers or make_scalers(random_state))
@@ -200,11 +204,12 @@ def fit_smote_mrs_scenarios(
         Xres, yres, summary = smote_mrs(
             Xtr_scaled,
             y_train,
-            n_groups=n_clusters,
+            n_groups=n_groups or n_clusters,
             target_ratio=target_ratio,
             random_state=random_state,
+            n_init=n_init,
         )
-        model = KMeans(n_clusters=n_clusters, n_init=20, random_state=random_state)
+        model = KMeans(n_clusters=n_clusters, n_init=n_init, random_state=random_state)
         model.fit(Xres)
         scenarios[name] = {
             "scaler": scaler,
